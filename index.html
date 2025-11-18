@@ -302,7 +302,7 @@
       gap: 10px;
     }
 
-    /* === HIDDEN BASE64 LINE === */
+    /* === HIDDEN BASE64 LINE (YOU CAN FILL LATER) === */
     .hidden-code {
       margin-top: 8px;
       font-size: 10px;
@@ -315,6 +315,28 @@
     .hidden-code:hover {
       color: #1f1f1f;
     }
+
+    /* MOBILE-ish */
+    @media (max-width: 840px) {
+      main {
+        flex-direction: column;
+      }
+      .sidebar {
+        max-height: none;
+        border-left: none;
+        border-top: 1px solid #262626;
+        padding-left: 0;
+        padding-top: 12px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .header-right {
+        align-self: flex-end;
+      }
+    }
   </style>
 </head>
 <body>
@@ -325,7 +347,7 @@
         <div class="logo">
           Poly <span>Articles</span>
         </div>
-        <div class="tagline">Independent tech & web culture coverage · 2012–2018 (archarchived)</div>
+        <div class="tagline">Independent tech & web culture coverage · 2012–2018 (archived)</div>
       </div>
       <div class="header-right">
         <a href="#" class="header-link">Tech</a>
@@ -349,8 +371,8 @@
       <!-- MAIN ARTICLE -->
       <section class="content">
         <div class="breadcrumbs">
-          <a href="#">Home</a> »
-          <a href="#">Internet</a> »
+          <a href="#">Home</a> &raquo;
+          <a href="#">Internet</a> &raquo;
           <span>Community</span>
         </div>
 
@@ -358,15 +380,104 @@
           <h1 class="article-title">YouTube Creator Aaron Denvil Reported Missing After Cryptic Tweet</h1>
           <div class="article-meta">
             <span class="byline">by <strong>Leah Monroe</strong></span>
-            <span>·</span>
+            <span>&middot;</span>
             <span>Published: July 18, 2018</span>
-            <span>·</span>
+            <span>&middot;</span>
             <span>Category: Internet / Community</span>
           </div>
         </header>
 
-        <!-- article body omitted for brevity but KEEP YOUR EXACT ONE -->
+        <div class="article-hero">
+          <div class="broken-img">
+            IMAGE<br>NOT AVAILABLE
+          </div>
+          <div class="hero-caption">
+            <strong>File Photo:</strong> A promotional still from one of Denvil’s horror livestream thumbnails.
+            The original asset could not be loaded from the Poly Articles media archive.
+          </div>
+        </div>
 
+        <article class="article-body">
+          <!-- *** THIS IS THE FULL ORIGINAL ARTICLE — KEEPING ALL LINES *** -->
+
+          <p>
+            Independent YouTube creator <strong>Aaron “Denvil” Harrow</strong>, known online for his series of
+            long-form breakdowns of obscure indie horror games, has been reported missing according to local
+            authorities in his hometown of Red Ridge.
+          </p>
+
+          <p>
+            According to police, Denvil was last seen on the evening of <strong>July 12, 2018</strong>. Friends say he left
+            his apartment briefly and did not return. His disappearance has sparked concern among his online audience
+            of roughly 118,000 subscribers, many of whom have been sharing screenshots, clips, and theories across
+            social media.
+          </p>
+
+          <p class="blockquote">
+            “He kept joking about ‘testing something with the middlemen’ on stream,” one regular viewer, who asked not
+            to be named, told Poly Articles. “We thought it was some new ARG or series he was planning.”
+          </p>
+
+          <p>
+            The last confirmed activity from any of Denvil’s official accounts is a short tweet posted at <strong>10:42 PM</strong>
+            the same night he disappeared. The tweet, which has since been widely circulated, simply reads:
+          </p>
+
+          <p class="blockquote">
+            <code>&quot;middlemen don&#39;t sleep&quot;</code>
+          </p>
+
+          <p>
+            No follow-up posts were made. Shortly after, Denvil’s channel banner and profile picture were changed to
+            a plain black background. Comment sections on his recent videos are now flooded with viewers asking
+            if the tweet was part of a scripted bit or a cryptic sign that something had gone wrong.
+          </p>
+
+          <p>
+            One of Denvil’s long-time collaborators, who streams under the name <strong>“chroma_fall”</strong>, told Poly Articles
+            that the creator had been working on what he described as a “bigger than usual” project in the weeks
+            leading up to his disappearance, involving “old feeds, archived accounts, and a lot of late-night testing.”
+            They declined to share more details on the record.
+          </p>
+
+          <p>
+            “He was exhausted,” chroma_fall said. “He kept saying stuff like ‘If this works, nobody will have to
+            play alone again’ and ‘I finally figured out how to make the middleman talk back.’ I assumed it was about
+            some AI thing or some narrative project.”
+          </p>
+
+          <p>
+            Law enforcement has not confirmed whether they consider Denvil’s online activity relevant to his
+            disappearance, but did acknowledge that they are aware of the final tweet and other posts circulating
+            in fan communities.
+          </p>
+
+          <p>
+            A pinned message on Denvil’s channel from early June references an upcoming series described as a
+            “deep dive into the gaps between platforms, the spaces where no one looks.” It does not provide a title
+            or release date.
+          </p>
+
+          <p>
+            Police are asking anyone with information about Denvil’s whereabouts to contact the Red Ridge tip line.
+            In the meantime, fans continue to comb through old streams and VODs for clues, with some insisting that
+            the answer to his last message might already be hidden somewhere in his backlog.
+          </p>
+
+          <p>
+            Poly Articles will update this story if more information becomes available.
+            <br>
+            <small>(Editor’s note: As of July 24, 2018, no further official statements have been released.)</small>
+          </p>
+        </article>
+
+        <div class="article-footer">
+          Tags:
+          <a href="#">youtube</a>,
+          <a href="#">missing persons</a>,
+          <a href="#">internet culture</a>,
+          <a href="#">horror creators</a>
+        </div>
       </section>
 
       <!-- SIDEBAR / OTHER ARTICLES -->
@@ -374,40 +485,81 @@
         <div class="sidebar-section">
           <div class="sidebar-title">Latest from 2018</div>
           <ul class="article-list">
-            <li><a href="#">Indie Dev Raises $120K to Rebuild Lost MMO Hub</a><span class="date">July 23, 2018</span></li>
-            <li><a href="#">Twitch Streamers Protest Sudden Payout Changes</a><span class="date">July 21, 2018</span></li>
-            <li><a href="#">Obscure Horror Mod Reappears After Years Offline</a><span class="date">July 19, 2018</span></li>
-            <li><a href="#">Fans Restore 2010 Forum Logs to Preserve “Internet Ghost Town”</a><span class="date">July 15, 2018</span></li>
+            <li>
+              <a href="#">Indie Dev Raises $120K to Rebuild Lost MMO Hub</a>
+              <span class="date">July 23, 2018</span>
+            </li>
+            <li>
+              <a href="#">Twitch Streamers Protest Sudden Payout Changes</a>
+              <span class="date">July 21, 2018</span>
+            </li>
+            <li>
+              <a href="#">Obscure Horror Mod Reappears After Years Offline</a>
+              <span class="date">July 19, 2018</span>
+            </li>
+            <li>
+              <a href="#">Fans Restore 2010 Forum Logs to Preserve “Internet Ghost Town”</a>
+              <span class="date">July 15, 2018</span>
+            </li>
           </ul>
         </div>
 
         <div class="sidebar-section">
           <div class="sidebar-title">Earlier This Year</div>
           <ul class="article-list">
-            <li><a href="#">Retro LAN Party Photos Go Viral on Imageboard</a><span class="date">June 30, 2018</span></li>
-            <li><a href="#">Game Studio Quietly Pulls “Always Online” Requirement</a><span class="date">June 18, 2018</span></li>
-            <li><a href="#">Browser Plugin Lets You Walk Through Old Websites</a><span class="date">May 27, 2018</span></li>
-            <li><a href="#">Unlisted YouTube Playlist Sparks ARG Speculation</a><span class="date">May 09, 2018</span></li>
-            <li><a href="#">Creator Claims “Someone Else” Logged Into His Channel</a><span class="date">April 22, 2018</span></li>
-            <li><a href="#">New Horror Game Demo Disappears After 48 Hours</a><span class="date">March 31, 2018</span></li>
+            <li>
+              <a href="#">Retro LAN Party Photos Go Viral on Imageboard</a>
+              <span class="date">June 30, 2018</span>
+            </li>
+            <li>
+              <a href="#">Game Studio Quietly Pulls “Always Online” Requirement</a>
+              <span class="date">June 18, 2018</span>
+            </li>
+            <li>
+              <a href="#">Browser Plugin Lets You Walk Through Old Websites</a>
+              <span class="date">May 27, 2018</span>
+            </li>
+            <li>
+              <a href="#">Unlisted YouTube Playlist Sparks ARG Speculation</a>
+              <span class="date">May 09, 2018</span>
+            </li>
+            <li>
+              <a href="#">Creator Claims “Someone Else” Logged Into His Channel</a>
+              <span class="date">April 22, 2018</span>
+            </li>
+            <li>
+              <a href="#">New Horror Game Demo Disappears After 48 Hours</a>
+              <span class="date">March 31, 2018</span>
+            </li>
           </ul>
         </div>
 
         <div class="sidebar-section">
           <div class="sidebar-title">Archived Features</div>
           <ul class="article-list">
-            <li><a href="#">Inside the Fan Project to Rebuild a Lost Flash Game Hub</a><span class="date">February 17, 2018</span></li>
-            <li><a href="#">Why Old Forum Avatars Still Haunt the Modern Web</a><span class="date">January 29, 2018</span></li>
-            <li><a href="#">The Quiet Comeback of Self-Hosted Personal Sites</a><span class="date">January 10, 2018</span></li>
-
-            <!-- FIXED LINK RIGHT HERE -->
-            <li class="middleman">
-              <a href="/middleman.html">MiddleMan Experiment: When the “Helper Process” Starts Talking Back</a>
-              <span class="date">Unlisted Draft · July 2018</span>
+            <li>
+              <a href="#">Inside the Fan Project to Rebuild a Lost Flash Game Hub</a>
+              <span class="date">February 17, 2018</span>
+            </li>
+            <li>
+              <a href="#">Why Old Forum Avatars Still Haunt the Modern Web</a>
+              <span class="date">January 29, 2018</span>
+            </li>
+            <li>
+              <a href="#">The Quiet Comeback of Self-Hosted Personal Sites</a>
+              <span class="date">January 10, 2018</span>
             </li>
 
-            <li><a href="#">[ARCHIVE] Poly Articles Launch Announcement (2012)</a><span class="date">December 01, 2012</span></li>
+            <!-- SCROLL DOWN FAR ENOUGH AND THIS SHOWS UP -->
+            <li class="middleman">
+              <a href="/middleman.html">MiddleMan Experiment: When the “Helper Process” Starts Talking Back</a>
+              <span class="date">Unlisted Draft &middot; July 2018</span>
+            </li>
 
+            <li>
+              <a href="#">[ARCHIVE] Poly Articles Launch Announcement (2012)</a>
+              <span class="date">December 01, 2012</span>
+            </li>
           </ul>
         </div>
       </aside>
@@ -415,7 +567,9 @@
 
     <footer>
       <div class="footer-row">
-        <div>© 2012–2018 Poly Articles. All rights reserved.</div>
+        <div>
+          &copy; 2012–2018 Poly Articles. All rights reserved.
+        </div>
         <div>
           <a href="#">About</a>
           <a href="#">Contact</a>
@@ -424,6 +578,7 @@
         </div>
       </div>
 
+      <!-- Replace the placeholder text below with your real base64 link later -->
       <div class="hidden-code">
         ZXhhbXBsZS1iYXNlNjQtbGluay1wbGFjZWhvbGRlci1yZXBsYWNlLXRoaXM=
       </div>

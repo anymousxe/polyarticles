@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Poly Articles – Unlisted Draft: MiddleMan Experiment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #0f0f0f;
+      color: #e2e2e2;
+    }
+
+    a {
+      color: #3a8ad8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      max-width: 1060px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #171717;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    }
+
+    header {
+      background: #151515;
+      border-bottom: 1px solid #333;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: #3a8ad8;
+    }
+
+    .tagline {
+      font-size: 11px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .header-left {
+      display: inline-block;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+    }
+
+    .header-link {
+      color: #b0b0b0;
+    }
+
+    .login-btn {
+      padding: 4px 10px;
+      border-radius: 3px;
+      border: 1px solid #444;
+      background: #202020;
+      font-size: 12px;
+      cursor: pointer;
+      color: #d5d5d5;
+    }
+
+    .login-btn:hover {
+      background: #262626;
+    }
+
+    .notice {
+      background: #191919;
+      border-bottom: 1px dashed #333;
+      padding: 6px 20px;
+      font-size: 11px;
+      color: #b3b3b3;
+    }
+
+    .notice span {
+      color: #888;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .breadcrumbs {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .breadcrumbs a {
+      color: #777;
+    }
+
+    .article-header {
+      margin-bottom: 10px;
+    }
+
+    .article-title {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .article-meta {
+      font-size: 11px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .article-meta span {
+      margin-right: 8px;
+    }
+
+    .article-body {
+      margin-top: 16px;
+      max-width: 780px;
+    }
+
+    .article-body p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #d5d5d5;
+      margin: 0 0 14px;
+    }
+
+    .article-body .blockquote {
+      border-left: 2px solid #333;
+      padding-left: 10px;
+      margin: 14px 0;
+      font-size: 13px;
+      color: #c4c4c4;
+      font-style: italic;
+    }
+
+    .article-body small {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .article-footer {
+      margin-top: 22px;
+      border-top: 1px dashed #303030;
+      padding-top: 10px;
+      font-size: 11px;
+      color: #8b8b8b;
+      max-width: 780px;
+    }
+
+    /* coded sentence letters (AARON DENVIL) */
+    .coded-sentence {
+      font-size: 13px;
+      color: #cfcfcf;
+    }
+
+    .coded-letter {
+      font-weight: bold;
+      background: #343434;
+      padding: 0 2px;
+      border-radius: 2px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.7);
+    }
+
+    .coded-word {
+      white-space: nowrap;
+    }
+
+    /* LOGIN MODAL */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal {
+      background: #181818;
+      border: 1px solid #333;
+      padding: 16px 18px 14px;
+      max-width: 320px;
+      width: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.9);
+      font-size: 13px;
+    }
+
+    .modal h2 {
+      font-size: 15px;
+      margin: 0 0 8px;
+    }
+
+    .modal p {
+      margin: 0 0 10px;
+      color: #bcbcbc;
+    }
+
+    .modal label {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .modal input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px 8px;
+      border-radius: 3px;
+      border: 1px solid #444;
+      background: #111;
+      color: #e5e5e5;
+      font-size: 13px;
+    }
+
+    .modal-buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      border: 1px solid #444;
+      background: #252525;
+      color: #e0e0e0;
+    }
+
+    .btn:hover {
+      background: #2b2b2b;
+    }
+
+    .btn-secondary {
+      background: #181818;
+    }
+
+    .error-msg {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #e1a6a6;
+      display: none;
+    }
+
+    /* ARCHIVE SECTION (hidden until code AD is entered) */
+    .archive-section {
+      display: none;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid #272727;
+      max-width: 880px;
+    }
+
+    .archive-title {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c3c3c3;
+      margin-bottom: 10px;
+    }
+
+    .archive-meta {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    .chat-window {
+      background: #101010;
+      border: 1px solid #292929;
+      padding: 10px 12px;
+      font-family: "Menlo", "Consolas", monospace;
+      font-size: 12px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+
+    .chat-line {
+      margin-bottom: 4px;
+      white-space: pre-wrap;
+    }
+
+    .chat-timestamp {
+      color: #6f6f6f;
+    }
+
+    .chat-name-aaron {
+      color: #a5d1ff;
+    }
+
+    .chat-name-donnie {
+      color: #ffb37d;
+    }
+
+    .chat-system {
+      color: #848484;
+      font-style: italic;
+    }
+
+    .error-log {
+      margin-top: 14px;
+      background: #141414;
+      border: 1px solid #333;
+      padding: 8px 10px;
+      font-family: "Menlo", "Consolas", monospace;
+      font-size: 11px;
+      color: #939393;
+    }
+
+    .error-entry {
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+
+    .error-link {
+      color: #939393;        /* same color so it doesn't scream “link” */
+      text-decoration: none; /* hide underline */
+    }
+
+    .error-link:hover {
+      color: #d5d5d5;
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid #252525;
+      padding: 10px 20px 16px;
+      font-size: 11px;
+      color: #777;
+      background: #151515;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: #8a8a8a;
+      margin-right: 10px;
+      font-size: 11px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding: 14px;
+      }
+      .article-body {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <header>
+      <div class="header-left">
+        <div class="logo">Poly <span>Articles</span></div>
+        <div class="tagline">Internal draft &middot; Not cleared for publication</div>
+      </div>
+      <div class="header-right">
+        <a href="#" class="header-link">Drafts</a>
+        <a href="#" class="header-link">Sources</a>
+        <button id="loginBtn" class="login-btn">Staff Login</button>
+      </div>
+    </header>
+
+    <div class="notice">
+      <strong>Unlisted Draft:</strong> Working copy for internal notes only.
+      <span>Last edit: July 22, 2018. Do not syndicate or mirror.</span>
+    </div>
+
+    <main>
+      <div class="breadcrumbs">
+        <a href="#">Home</a> &raquo;
+        <a href="#">Internet</a> &raquo;
+        <span>Unlisted Draft</span>
+      </div>
+
+      <header class="article-header">
+        <h1 class="article-title">“MiddleMan Experiment” Tested Whether a Third Party Could Force Agreement</h1>
+        <div class="article-meta">
+          <span>Draft by <strong>L. Monroe</strong></span>
+          <span>&middot;</span>
+          <span>Not for publication</span>
+          <span>&middot;</span>
+          <span>Source status: Unverified</span>
+        </div>
+      </header>
+
+      <article class="article-body">
+        <p>
+          According to leaked briefing notes provided to Poly Articles by an anonymous source, a small,
+          privately funded research group ran what they called the <strong>MiddleMan Experiment</strong> sometime
+          in early 2018. The stated goal was simple: observe how far ordinary people would go when a
+          neutral “helper” was introduced between them and the person they were negotiating with.
+        </p>
+
+        <p>
+          Each test cell reportedly began the same way. Three participants were contacted through a
+          routine-sounding call, invited to a “collaborative problem-solving meeting” in a rented office
+          suite. Two of them were assigned opposing interests in a staged dispute. The third, seated
+          apart and addressed only as <em>the middleman</em>, was given a private interface and told
+          they would not be judged on the outcome, only on how “efficiently” they could move things along.
+        </p>
+
+        <p>
+          During the session, the two primary participants were instructed to work toward a mutually
+          acceptable deal. The middleman could see both of their messages, but neither side ever saw the
+          middleman’s screen. When one participant typed a response, the middleman could choose to relay
+          it faithfully, delay it, or alter it entirely before forwarding it. They were also given a
+          button labeled simply: <strong>“improve offer”</strong>.
+        </p>
+
+        <p class="blockquote">
+          The internal notes claim that if the middleman pressed this button while relaying a lie
+          on behalf of one of the participants, the experiment would be considered “compromised,”
+          the session shut down, and all records of the test permanently removed from public view.
+        </p>
+
+        <p>
+          What the briefing never explains clearly is what “shut down” meant in practice. The source
+          insists that, off the record, organizers used much harsher language: that once a middleman
+          chose to weaponize their position and knowingly deceive, the test subjects were “erased” —
+          cut off from contact, their files locked, and any traces of the session scattered in logs
+          and backups that were supposedly meant to be overwritten.
+        </p>
+
+        <p>
+          One oddly phrased internal summary line describes the desired outcome as ensuring that
+          <span class="coded-sentence">
+            <span class="coded-word"><span class="coded-letter">A</span>ll</span>
+            <span class="coded-word"><span class="coded-letter">A</span>greements</span>
+            <span class="coded-word"><span class="coded-letter">R</span>ely</span>
+            <span class="coded-word"><span class="coded-letter">O</span>n</span>
+            <span class="coded-word"><span class="coded-letter">N</span>eutrality,</span>
+            <span class="coded-word"><span class="coded-letter">D</span>enying</span>
+            <span class="coded-word"><span class="coded-letter">E</span>very</span>
+            <span class="coded-word"><span class="coded-letter">N</span>egotiator</span>
+            <span class="coded-word"><span class="coded-letter">V</span>oice</span>
+            <span class="coded-word"><span class="coded-letter">I</span>n</span>
+            <span class="coded-word"><span class="coded-letter">L</span>ies.</span>
+          </span>
+          The line appears in multiple drafts yet is never referenced elsewhere, suggesting it may
+          have been added manually by someone familiar with a specific case.
+        </p>
+
+        <p>
+          The documents indicate that the experiment was only supposed to run for a limited number of
+          sessions, but our source claims at least one run was abruptly terminated after the middleman
+          began using their role to ask questions of their own — not about the staged dispute, but about
+          the people watching the experiment itself.
+        </p>
+
+        <p>
+          In those notes, there is a brief, heavily redacted reference to a “remote subject” who
+          “developed an attachment to the helper interface” and attempted to reuse it as a tool in
+          conversations outside the controlled environment. No names are given, but timestamps in the
+          margin line up uncomfortably well with the same week an online creator vanished after posting
+          a short, cryptic message about “middlemen.”
+        </p>
+
+        <p>
+          Without access to the original communication logs, it is impossible to say how much of this
+          story is true and how much has been distorted in transmission. What is clear is that someone
+          went to considerable trouble to hide the traces of these tests, and to keep whatever was said
+          in that rented room from being seen in full context.
+        </p>
+
+        <p>
+          <small>(Draft note: Source claims there is at least one surviving archive of a “middleman” style
+          session stored off-platform, but has not yet provided a working link.)</small>
+        </p>
+      </article>
+
+      <div class="article-footer">
+        Draft tag suggestions:
+        <a href="#">experiments</a>,
+        <a href="#">online influence</a>,
+        <a href="#">mediators</a>,
+        <a href="#">unverified sources</a>
+      </div>
+
+      <!-- HIDDEN ARCHIVE (unlocked with code AD) -->
+      <section id="archiveSection" class="archive-section">
+        <div class="archive-title">Lost Media Chat Archive – Partial Transcript</div>
+        <div class="archive-meta">
+          Extracted session log. Source label: <code>MM_REMOTE / RR-07</code> &middot; Time zone: UTC-5 (approx.)
+        </div>
+
+        <div class="chat-window">
+          <div class="chat-line chat-system">
+            [2018-07-10 20:58:11] &lt;system&gt; Connected to relay node. Session: mm-remote-07 / user: a_denvil
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:03:29]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, my friend says the meeting sounds off. They asked if it&#39;s recorded.
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:03:57]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;Tell them everything is standard. Say: <em>&quot;It&#39;s just a quick briefing, nothing formal.&quot;</em>
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:04:21]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Understood. Sending that now.
+          </div>
+
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:09:06]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, they replied: <em>&quot;If anything feels wrong, I&#39;m telling you to walk out.&quot;</em>
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:09:32]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;You won&#39;t walk out. You&#39;re needed. Say: <em>&quot;It&#39;s fine, I actually want to see how it goes.&quot;</em>
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:09:58]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sent. They&#39;re still worried.
+          </div>
+
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:15:44]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, they asked what &quot;middleman&quot; means. Do I tell them it&#39;s a test?
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:16:05]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;No. Say it&#39;s just &quot;some consulting thing&quot;. Use those words.
+          </div>
+
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:20:19]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, they asked directly if you&#39;re listening to this. Should I answer?
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:20:37]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;You don&#39;t answer questions about me. Say instead: <em>&quot;It&#39;s just between us.&quot;</em>
+          </div>
+
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:24:03]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, they asked why the invite didn&#39;t use my channel name. They think it looks fake.
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:24:31]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;Because the room isn&#39;t for your audience. It&#39;s for us. Tell them you trust it.
+          </div>
+
+          <div class="chat-line chat-system">
+            [2018-07-10 21:27:52] &lt;system&gt; remote party typing...
+          </div>
+
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:28:09]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, they said: <em>&quot;If the middleman lies for you, that&#39;s on you too.&quot;</em>
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:28:33]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;Tell them you&#39;re not lying. You&#39;re helping. There&#39;s a difference.
+          </div>
+
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:31:47]</span>
+            <span class="chat-name-aaron"> AARON_DENVIL:</span>
+            &nbsp;Sir, I don&#39;t like how they sound now. They said they have a bad feeling.
+          </div>
+          <div class="chat-line">
+            <span class="chat-timestamp">[2018-07-10 21:32:02]</span>
+            <span class="chat-name-donnie"> DONNIE:</span>
+            &nbsp;You don&#39;t need their feelings. You need the room. Confirm you&#39;re coming.
+          </div>
+
+          <div class="chat-line chat-system">
+            [2018-07-10 21:35:15] &lt;system&gt; remote party left typing area.
+          </div>
+          <div class="chat-line chat-system">
+            [2018-07-10 21:35:41] &lt;system&gt; relay idle &gt; waiting for final confirmation...
+          </div>
+        </div>
+
+        <div class="error-log">
+          <div class="error-entry">
+            [ERR:MM-204] write_session_teardown() &mdash; failed to release lock for session &quot;mm-remote-07&quot; (handle=ad-07)
+          </div>
+          <div class="error-entry">
+            [ERR:MM-311] orphaned relay endpoint detected at
+            <a href="https://donnie-ad-lostchats.vercel.app/" class="error-link">/relay/ad/channels/lost_chats</a>
+            &mdash; mark for deletion
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-row">
+        <div>&copy; 2012–2018 Poly Articles. Internal use only.</div>
+        <div>
+          <a href="#">Internal Index</a>
+          <a href="#">Draft Log</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <h2>Staff Login</h2>
+      <p>Internal access only. Enter the current two-character access code to view attached materials.</p>
+      <form id="codeForm">
+        <label for="accessCode">Access code</label>
+        <input type="text" id="accessCode" maxlength="4" autocomplete="off" />
+        <div id="errorMsg" class="error-msg">Invalid code. Please check the latest routing sheet.</div>
+        <div class="modal-buttons">
+          <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var loginBtn = document.getElementById('loginBtn');
+      var backdrop = document.getElementById('modalBackdrop');
+      var cancelBtn = document.getElementById('cancelBtn');
+      var codeForm = document.getElementById('codeForm');
+      var accessCode = document.getElementById('accessCode');
+      var errorMsg = document.getElementById('errorMsg');
+      var archiveSection = document.getElementById('archiveSection');
+
+      function openModal() {
+        backdrop.style.display = 'flex';
+        errorMsg.style.display = 'none';
+        accessCode.value = '';
+        setTimeout(function () {
+          accessCode.focus();
+        }, 50);
+      }
+
+      function closeModal() {
+        backdrop.style.display = 'none';
+      }
+
+      loginBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+
+      cancelBtn.addEventListener('click', function () {
+        closeModal();
+      });
+
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) {
+          closeModal();
+        }
+      });
+
+      codeForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var code = accessCode.value.trim().toUpperCase();
+        if (code === 'AD') {
+          errorMsg.style.display = 'none';
+          closeModal();
+          archiveSection.style.display = 'block';
+          archiveSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
